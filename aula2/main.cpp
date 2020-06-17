@@ -2,6 +2,8 @@
 #include <string>
 
 int main(int argc, char* argv[]){
+    //argc -> quantidade de parametros passados para main
+    //argv -> parametros passados para main
     std::string nome;
 
     if(argc == 1){

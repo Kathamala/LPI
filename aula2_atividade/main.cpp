@@ -24,6 +24,7 @@ int main(int argc, char* argv[]){
             mensagem += argv[i+2];
             mensagem += " ";
         }
+
         
         std::cout << "Mensagem Adicionada: " << mensagem << std::endl;
         return 0;
