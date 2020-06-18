@@ -3,13 +3,12 @@
 #include <string>
 //Atividade: Listar todas as mensagens escritas com add usando um novo comando "list"
 int main(int argc, char* argv[]){
-    std::ofstream arquivo_saida("file.txt", std::ios::app);
-    std::ifstream arquivo_entrada("file.txt");
+    std::fstream file("file.txt", std::ios::in | std::ios::out | std::ios::app); //abrir arquivo para leitura e escrita com append
     std::string mensagem;
     std::string comando;
 
     //verificar se arquivo foi aberto
-    if(!arquivo_saida.is_open()){
+    if(!file.is_open()){
         std::cerr << "O arquivo não pode ser criado" << std::endl; //cerr imprime como um erro
         return -1;
     }
@@ -33,7 +32,7 @@ int main(int argc, char* argv[]){
     if(argc > 2 && comando == "add"){
         mensagem = argv[2];
         
-        arquivo_saida << mensagem << std::endl;
+        file << mensagem << std::endl;
         std::cout << "Mensagem Adicionada" << std::endl;
         return 0;
     }
@@ -41,9 +40,9 @@ int main(int argc, char* argv[]){
     //./prog list
     int line_number = 0;
     if(comando == "list"){
-        while(!arquivo_entrada.eof()){
+        while(!file.eof()){
             ++line_number;
-            std::getline(arquivo_entrada, mensagem);
+            std::getline(file, mensagem);
             if(mensagem.size() == 0){
                 continue;
             }
@@ -56,7 +55,7 @@ int main(int argc, char* argv[]){
     //./prog add
     std::cout << "Digite uma mensagem: ";
     std::getline(std::cin, mensagem);
-    arquivo_saida << mensagem << std::endl; 
+    file << mensagem << std::endl; 
     std::cout << "Mensagem Adicionada" << std::endl;
 
 
