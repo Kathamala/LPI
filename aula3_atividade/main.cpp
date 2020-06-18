@@ -8,6 +8,12 @@ int main(int argc, char* argv[]){
     std::string mensagem;
     std::string comando;
 
+    //verificar se arquivo foi aberto
+    if(!arquivo_saida.is_open()){
+        std::cerr << "O arquivo não pode ser criado" << std::endl; //cerr imprime como um erro
+        return -1;
+    }
+
     //./prog
     if(argc == 1){
         std::cout << "Uso: " << argv[0] << " add <mensagem>" << std::endl;
