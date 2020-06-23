@@ -1,0 +1,1 @@
+Compile: g++ -st=c++11 -o main main.cpp Diary.cpp App.cpp && ./main
