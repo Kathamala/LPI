@@ -22,8 +22,11 @@ Helper.o: src/Helper.cpp include/Helper.h
 Time.o: src/Time.cpp include/Time.h
 	$(GCC) $(GCC_FLAGS) -c src/Time.cpp	
 
-$(PROGRAM): App.o Date.o Diary.o Helper.o Time.o main.o
-	$(GCC) $(GCC_FLAGS) -o $(PROGRAM) App.o Date.o Diary.o Helper.o Time.o main.o		
+Config.o: src/Config.cpp include/Config.h
+	$(GCC) $(GCC_FLAGS) -c src/Config.cpp	
+
+$(PROGRAM): App.o Date.o Diary.o Helper.o Time.o Config.o main.o
+	$(GCC) $(GCC_FLAGS) -o $(PROGRAM) App.o Date.o Diary.o Helper.o Time.o Config.o main.o		
 
 clean:
 	rm -f *.o
